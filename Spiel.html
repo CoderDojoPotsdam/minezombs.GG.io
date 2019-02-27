@@ -1,0 +1,87 @@
+<html>
+<head>
+	<style>
+		#karte img {
+			position: absolute;
+			
+		}
+		#spieler  {
+			position: absolute;
+			left:230px;
+			top:70px;
+		}
+		#menü {
+			position:absolute;
+			left:20px;
+			top:20px;
+		}
+	</style>
+</head>
+<body>
+<pre id="kartentext">
+;baum;shop;;fluss mit fisch;;;;;
+gras;steine;shop;shop;;;;;;fluss mit fischen
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;shop;;;;</pre>
+<div id="karte">
+</div>
+<div id="spieler">
+	<img id="spielerbild" src="skins/niht.png">
+</div>
+<div id="menü">
+<select name="Pizza" size="5" onchange="spielerbild.src=(this.value)">
+      <option value="skins/niht.png">Night</option>
+      <option value="skins/Frog.PNG">Frog</option>
+
+    </select>
+	</div>
+<script>
+kartentext.innerHTML.split("\n").forEach(function(zeile,y){
+	zeile.split(";").forEach(function(bild,x){
+		if (bild == '' ) {
+			bild="gras";
+		}
+		karte.innerHTML += '<img style="left:'+x*100+'px;top:'+y*100+'px" src="map/'+bild+'.png">';
+	});
+	karte.innerHTML += '<br />';
+});
+
+var x=230;
+var y=70;
+function TasteGedrueckt (evt) {
+	if (evt.key=="a"){
+		x=x-2;
+	}
+	if (evt.key=="s"){
+		y=y+2;
+	}
+	if (evt.key=="w"){
+		y=y-2;
+	}
+	if (evt.key=="d"){
+		x=x+2;
+	}
+	bewegen();
+  }
+function bewegen(){
+	spieler.style.left=x+"px";
+	spieler.style.top=y+"px"
+}
+document.addEventListener("keypress", TasteGedrueckt );
+
+  
+  
+
+</script>
+</body> 
+</html>
