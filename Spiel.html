@@ -15,12 +15,16 @@
 			left:20px;
 			top:20px;
 		}
+		#Stein {
+			background-color:white;
+		}
+		
 	</style>
 </head>
 <body>
 <pre id="kartentext">
 ;baum;shop;;fluss mit fisch;;;;;
-gras;steine;shop;shop;;;;;;fluss mit fischen
+gras;steine;shop;shop;;;;;;fluss mit fisch
 ;;;;;;;;;
 ;;;;;;;;;
 ;;;;;;;;;
@@ -39,19 +43,42 @@ gras;steine;shop;shop;;;;;;fluss mit fischen
 	<img id="spielerbild" src="skins/niht.png">
 </div>
 <div id="menü">
-<select name="Pizza" size="5" onchange="spielerbild.src=(this.value)">
-      <option value="skins/niht.png">Night</option>
-      <option value="skins/Frog.PNG">Frog</option>
-
+	<select name="Pizza" size="5" onchange="spielerbild.src=(this.value)">
+		<option value="skins/1000 Eyes.png">1000 Eyes.png</option>
+		<option value="skins/Frog.png">Frog.png</option>
+		<option value="skins/frosen chicken.png">frosen chicken.png</option>
+		<option value="skins/hallowen 2.png">hallowen 2.png</option>
+		<option value="skins/hallowen2 kanal.png">hallowen2 kanal.png</option>
+		<option value="skins/horor#MAN#.png">horor#MAN#.png</option>
+		<option value="skins/horor.png">horor.png</option>
+		<option value="skins/Horrorman 2.png">Horrorman 2.png</option>
+		<option value="skins/Horrorman.png">Horrorman.png</option>
+		<option value="skins/Horst.png">Horst.png</option>
+		<option value="skins/its a dream.png">its a dream.png</option>
+		<option value="skins/KAKI.png">KAKI.png</option>
+		<option value="skins/Kotti.png">Kotti.png</option>
+		<option value="skins/niht.png">niht.png</option>
+		<option value="skins/red star.png">red star.png</option>
+		<option value="skins/shnow chicken.png">shnow chicken.png</option>
+		<option value="skins/TEUFEL.png">TEUFEL.png</option>
+		<option value="skins/Ultrachicken06.png">Ultrachicken06.png</option>
     </select>
+	<div id="Stein">
+	</div>
 	</div>
 <script>
+var stein=0; 
+function bildklick(img){
+	console.log(img);
+	stein++;
+	Stein.innerText="Steine:"+stein;
+}
 kartentext.innerHTML.split("\n").forEach(function(zeile,y){
 	zeile.split(";").forEach(function(bild,x){
 		if (bild == '' ) {
 			bild="gras";
 		}
-		karte.innerHTML += '<img style="left:'+x*100+'px;top:'+y*100+'px" src="map/'+bild+'.png">';
+		karte.innerHTML += '<img style="left:'+x*100+'px;top:'+y*100+'px" src="map/'+bild+'.png" onclick="bildklick(this)">';
 	});
 	karte.innerHTML += '<br />';
 });
