@@ -71,7 +71,9 @@ gras;steine;shop;shop;;;;;;fluss mit fisch
 var stein=0; 
 function bildklick(img){
 	console.log(img);
-	stein++;
+	if(Spieleraufbild(img)&&img.src.includes("stein")){
+		stein++;
+	}
 	Stein.innerText="Steine:"+stein;
 }
 kartentext.innerHTML.split("\n").forEach(function(zeile,y){
@@ -83,6 +85,8 @@ kartentext.innerHTML.split("\n").forEach(function(zeile,y){
 	});
 	karte.innerHTML += '<br />';
 });
+
+
 
 var x=230;
 var y=70;
@@ -107,7 +111,11 @@ function bewegen(){
 }
 document.addEventListener("keypress", TasteGedrueckt );
 
-  
+function Spieleraufbild(bild){
+	var bildx=parseInt(bild.style.left.substring(0,bild.style.left.length-2));
+	var bildy=parseInt(bild.style.top.substring(0,bild.style.top.length-2));
+	return y > bildy && x > bildx && y < bildy + 100 && x < bildx + 100;
+}
   
 
 </script>
